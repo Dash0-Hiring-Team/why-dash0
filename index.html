@@ -136,16 +136,12 @@ section { padding: 100px 24px; }
   transform: translateY(-4px);
   border-color: rgba(240,90,40,0.3);
 }
-.founder-initials {
-  width: 56px; height: 56px;
-  background: linear-gradient(135deg, var(--orange), #FF8A5C);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 20px;
-  color: white;
+.founder-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--orange);
   margin-bottom: 20px;
 }
 .founder-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
@@ -264,12 +260,23 @@ section { padding: 100px 24px; }
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 12px;
   padding: 24px 40px;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--grey);
-  transition: border-color 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s;
+  min-height: 80px;
 }
-.investor-logo:hover { border-color: rgba(240,90,40,0.3); color: var(--white); }
+.investor-logo:hover { border-color: rgba(240,90,40,0.3); }
+.investor-logo img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(0.7);
+  transition: filter 0.3s;
+}
+.investor-logo:hover img {
+  filter: brightness(0) invert(1);
+}
 
 /* CUSTOMERS */
 .customers { background: var(--dark2); }
@@ -286,9 +293,16 @@ section { padding: 100px 24px; }
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 12px;
   padding: 20px 36px;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70px;
+}
+.customer-logo img {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(0.6);
 }
 
 /* WHY NOW */
@@ -316,7 +330,7 @@ section { padding: 100px 24px; }
 .why-card .number {
   font-size: 64px;
   font-weight: 800;
-  color: rgba(240,90,40,0.15);
+  color: var(--orange);
   line-height: 1;
   margin-bottom: 12px;
 }
@@ -433,25 +447,25 @@ footer {
     <div class="section-subtitle">This isn't a team figuring things out — they've built and scaled category-defining companies before.</div>
     <div class="founders-grid">
       <div class="founder-card">
-        <div class="founder-initials">MN</div>
+        <img src="./images/mirko.jpeg" alt="Mirko Novakovic" class="founder-photo">
         <div class="founder-name">Mirko Novakovic</div>
         <div class="founder-role">CEO & Founder</div>
         <div class="founder-bio">Built & sold Instana to IBM for $500M. Co-founded codecentric. 85+ B2B startup investments via New Forge. 15+ years in cloud & DevOps.</div>
       </div>
       <div class="founder-card">
-        <div class="founder-initials">BB</div>
+        <img src="./images/ben.jpeg" alt="Ben Blackmore" class="founder-photo">
         <div class="founder-name">Ben Blackmore</div>
         <div class="founder-role">CTO</div>
         <div class="founder-bio">Early Instana team. Built Dash0's platform from scratch. Deep expertise in distributed systems and observability infrastructure.</div>
       </div>
       <div class="founder-card">
-        <div class="founder-initials">OM</div>
+        <img src="./images/oli.jpeg" alt="Oliver Manojlovic" class="founder-photo">
         <div class="founder-name">Oliver Manojlovic</div>
         <div class="founder-role">CRO</div>
         <div class="founder-bio">Early Personio team. Scaled their sales organization from the ground up. Proven GTM leader in European B2B SaaS.</div>
       </div>
       <div class="founder-card">
-        <div class="founder-initials">OW</div>
+        <img src="./images/Orr.jpeg" alt="Orr Weinstein" class="founder-photo">
         <div class="founder-name">Orr Weinstein</div>
         <div class="founder-role">VP Product</div>
         <div class="founder-bio">Previously led Lumigo. Former Google and AWS. Deep domain expertise in serverless, LLM observability, and AI-driven operations.</div>
@@ -570,12 +584,12 @@ footer {
     <div class="section-label">Backed By the Best</div>
     <div class="section-title">$155M from World-Class Investors</div>
     <div class="investor-logos">
-      <div class="investor-logo">Balderton Capital</div>
-      <div class="investor-logo">Accel</div>
-      <div class="investor-logo">Cherry Ventures</div>
-      <div class="investor-logo">DIG Ventures</div>
-      <div class="investor-logo">DTCP Growth</div>
-      <div class="investor-logo">T.Capital (Deutsche Telekom)</div>
+      <div class="investor-logo"><img src="./images/Balderton.png" alt="Balderton Capital"></div>
+      <div class="investor-logo"><img src="./images/accel.jpeg" alt="Accel"></div>
+      <div class="investor-logo"><img src="./images/cherry.jpeg" alt="Cherry Ventures"></div>
+      <div class="investor-logo"><img src="./images/DIG.png" alt="DIG Ventures"></div>
+      <div class="investor-logo"><img src="./images/dtcp.jpeg" alt="DTCP Growth"></div>
+      <div class="investor-logo"><img src="./images/t-capital.jpeg" alt="T.Capital (Deutsche Telekom)"></div>
     </div>
   </div>
 </section>
@@ -586,11 +600,11 @@ footer {
     <div class="section-label">Trusted By</div>
     <div class="section-title">600+ Customers Worldwide</div>
     <div class="customer-logos">
-      <div class="customer-logo">Zalando</div>
-      <div class="customer-logo">Taco Bell</div>
-      <div class="customer-logo">The Telegraph</div>
-      <div class="customer-logo">Porsche</div>
-      <div class="customer-logo">Starling</div>
+      <div class="customer-logo"><img src="./images/zalando.png" alt="Zalando"></div>
+      <div class="customer-logo"><img src="./images/taco-bell.png" alt="Taco Bell"></div>
+      <div class="customer-logo"><img src="./images/telegraph.png" alt="The Telegraph"></div>
+      <div class="customer-logo"><img src="./images/porsche.png" alt="Porsche"></div>
+      <div class="customer-logo"><img src="./images/starling.png" alt="Starling"></div>
     </div>
   </div>
 </section>
