@@ -19,7 +19,7 @@
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--dark); color: var(--white); overflow-x: hidden; }
-
+ 
 /* HERO */
 .hero {
   min-height: 100vh;
@@ -91,7 +91,7 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--dark); co
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
+ 
 /* SECTIONS */
 section { padding: 100px 24px; }
 .container { max-width: 1100px; margin: 0 auto; }
@@ -116,7 +116,7 @@ section { padding: 100px 24px; }
   line-height: 1.6;
   margin-bottom: 48px;
 }
-
+ 
 /* FOUNDERS */
 .founders { background: var(--dark); }
 .founders-grid {
@@ -130,11 +130,30 @@ section { padding: 100px 24px; }
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 16px;
   padding: 32px;
-  transition: transform 0.3s, border-color 0.3s;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  position: relative;
 }
 .founder-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(240,90,40,0.3);
+  border-color: rgba(240,90,40,0.5);
+  box-shadow: 0 12px 32px rgba(240,90,40,0.1);
+}
+.founder-card::after {
+  content: '↗';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 18px;
+  color: var(--grey);
+  opacity: 0;
+  transition: opacity 0.3s, color 0.3s;
+}
+.founder-card:hover::after {
+  opacity: 1;
+  color: var(--orange);
 }
 .founder-photo {
   width: 80px;
@@ -147,7 +166,7 @@ section { padding: 100px 24px; }
 .founder-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
 .founder-role { font-size: 14px; color: var(--orange); margin-bottom: 12px; font-weight: 600; }
 .founder-bio { font-size: 14px; color: var(--grey); line-height: 1.6; }
-
+ 
 /* TIMELINE */
 .timeline-section { background: var(--dark2); }
 .timeline {
@@ -191,7 +210,7 @@ section { padding: 100px 24px; }
 }
 .timeline-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
 .timeline-desc { font-size: 15px; color: var(--grey); line-height: 1.5; }
-
+ 
 /* PRODUCT */
 .product { background: var(--dark); }
 .product-grid {
@@ -216,7 +235,7 @@ section { padding: 100px 24px; }
 }
 .product-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
 .product-card p { font-size: 14px; color: var(--grey); line-height: 1.6; }
-
+ 
 /* COMPARISON */
 .comparison { background: var(--dark2); }
 .compare-table {
@@ -244,38 +263,10 @@ section { padding: 100px 24px; }
 .compare-table td:nth-child(2) { color: var(--green); font-weight: 600; }
 .compare-table td:nth-child(3), .compare-table td:nth-child(4) { color: var(--grey); }
 .compare-table tr:last-child td { border-bottom: none; }
-
+ 
 /* INVESTORS */
 .investors { background: var(--dark); }
 .investor-logos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  justify-content: center;
-  align-items: center;
-  margin-top: 48px;
-}
-.investor-logo {
-  background: var(--dark2);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
-  padding: 24px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.3s;
-  min-height: 80px;
-}
-.investor-logo:hover { border-color: rgba(240,90,40,0.3); }
-.investor-logo img {
-  height: 60px;
-  max-width: 180px;
-  object-fit: contain;
-}
-
-/* CUSTOMERS */
-.customers { background: var(--dark2); }
-.customer-logos {
   display: flex;
   flex-wrap: wrap;
   gap: 32px;
@@ -283,22 +274,65 @@ section { padding: 100px 24px; }
   align-items: center;
   margin-top: 48px;
 }
-.customer-logo {
-  background: var(--dark);
+.investor-logo {
+  background: var(--dark2);
   border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
-  padding: 28px 48px;
+  border-radius: 16px;
+  padding: 12px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100px;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  min-height: 110px;
+  min-width: 220px;
+  text-decoration: none;
+  overflow: hidden;
+}
+.investor-logo:hover {
+  border-color: rgba(240,90,40,0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(240,90,40,0.1);
+}
+.investor-logo img {
+  height: 85px;
+  max-width: 210px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+ 
+/* CUSTOMERS */
+.customers { background: var(--dark2); }
+.customer-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 48px;
+}
+.customer-logo {
+  background: var(--dark);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 130px;
+  min-width: 240px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.customer-logo:hover {
+  border-color: rgba(240,90,40,0.3);
 }
 .customer-logo img {
-  height: 60px;
-  max-width: 200px;
+  height: 100px;
+  max-width: 230px;
   object-fit: contain;
+  border-radius: 8px;
 }
-
+ 
 /* WHY NOW */
 .why-now { background: var(--dark); }
 .why-cards {
@@ -330,7 +364,7 @@ section { padding: 100px 24px; }
 }
 .why-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
 .why-card p { font-size: 15px; color: var(--grey); line-height: 1.6; }
-
+ 
 /* RESOURCES */
 .resources { background: var(--dark2); }
 .resources-grid {
@@ -370,7 +404,7 @@ section { padding: 100px 24px; }
   margin-left: auto;
   white-space: nowrap;
 }
-
+ 
 /* CTA */
 .cta {
   background: linear-gradient(135deg, var(--orange), #FF8A5C);
@@ -391,7 +425,7 @@ section { padding: 100px 24px; }
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
-
+ 
 /* FOOTER */
 footer {
   background: var(--dark);
@@ -401,11 +435,11 @@ footer {
   font-size: 14px;
   border-top: 1px solid rgba(255,255,255,0.06);
 }
-
+ 
 /* ANIMATIONS */
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-
+ 
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .hero-stats { gap: 32px; }
@@ -413,11 +447,15 @@ footer {
   .compare-table { font-size: 12px; }
   .compare-table th, .compare-table td { padding: 12px 10px; }
   .timeline::before { left: 24px; }
+  .investor-logo { min-width: 180px; min-height: 95px; padding: 10px 16px; }
+  .investor-logo img { height: 70px; max-width: 170px; }
+  .customer-logo { min-width: 200px; min-height: 110px; padding: 12px 20px; }
+  .customer-logo img { height: 85px; max-width: 190px; }
 }
 </style>
 </head>
 <body>
-
+ 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
@@ -432,7 +470,7 @@ footer {
     </div>
   </div>
 </section>
-
+ 
 <!-- LEADERSHIP -->
 <section class="founders">
   <div class="container">
@@ -440,58 +478,58 @@ footer {
     <div class="section-title">Meet the Team Building Dash0</div>
     <div class="section-subtitle">A team of repeat winners who've built and scaled category-defining companies before.</div>
     <div class="founders-grid">
-      <div class="founder-card">
+      <a href="https://www.linkedin.com/in/mirkonovakovic/" target="_blank" rel="noopener noreferrer" class="founder-card">
         <img src="./images/mirko.jpeg" alt="Mirko Novakovic" class="founder-photo">
         <div class="founder-name">Mirko Novakovic</div>
         <div class="founder-role">CEO & Founder</div>
         <div class="founder-bio">Built & sold Instana to IBM for $500M. Co-founded codecentric. 85+ B2B startup investments via New Forge. 15+ years in cloud & DevOps.</div>
-      </div>
-      <div class="founder-card">
+      </a>
+      <a href="https://www.linkedin.com/in/benripkens/" target="_blank" rel="noopener noreferrer" class="founder-card">
         <img src="./images/ben.jpeg" alt="Ben Blackmore" class="founder-photo">
         <div class="founder-name">Ben Blackmore</div>
         <div class="founder-role">CTO & Co-Founder</div>
         <div class="founder-bio">Early Instana team. Built Dash0's platform from scratch. Deep expertise in distributed systems and observability infrastructure.</div>
-      </div>
-      <div class="founder-card">
+      </a>
+      <a href="https://www.linkedin.com/in/olivermanojlovic/" target="_blank" rel="noopener noreferrer" class="founder-card">
         <img src="./images/oli.jpeg" alt="Oliver Manojlovic" class="founder-photo">
         <div class="founder-name">Oliver Manojlovic</div>
         <div class="founder-role">CRO</div>
         <div class="founder-bio">Early Personio team. Scaled their sales organization from the ground up. Proven GTM leader in European B2B SaaS.</div>
-      </div>
-      <div class="founder-card">
+      </a>
+      <a href="https://www.linkedin.com/in/michelemancioppi/" target="_blank" rel="noopener noreferrer" class="founder-card">
         <img src="./images/michele.png" alt="Michele Mancioppi" class="founder-photo">
         <div class="founder-name">Michele Mancioppi</div>
         <div class="founder-role">Head of Product</div>
         <div class="founder-bio">Product leader with deep expertise in observability and developer tools. Shapes how Dash0 turns complex data into delightful experiences for engineers.</div>
-      </div>
-      <div class="founder-card">
+      </a>
+      <a href="https://www.linkedin.com/in/marcelsim/" target="_blank" rel="noopener noreferrer" class="founder-card">
         <img src="./images/marcel.png" alt="Marcel Sim" class="founder-photo">
         <div class="founder-name">Marcel Sim</div>
         <div class="founder-role">Head of Sales</div>
         <div class="founder-bio">Sales leader scaling Dash0's go-to-market across EMEA. Brings a track record of building high-performing sales teams in European B2B SaaS.</div>
-      </div>
-      <div class="founder-card">
+      </a>
+      <a href="https://www.linkedin.com/in/korling/" target="_blank" rel="noopener noreferrer" class="founder-card">
         <img src="./images/benedikt.png" alt="Benedikt Körling" class="founder-photo">
         <div class="founder-name">Benedikt Körling</div>
         <div class="founder-role">Head of Growth</div>
         <div class="founder-bio">Drives Dash0's growth engine across marketing, demand generation, and brand. Builds scalable acquisition strategies for developer-focused products.</div>
-      </div>
-      <div class="founder-card">
+      </a>
+      <a href="https://www.linkedin.com/in/peter-juentgen/" target="_blank" rel="noopener noreferrer" class="founder-card">
         <img src="./images/peter.png" alt="Peter Jüntgen" class="founder-photo">
         <div class="founder-name">Peter Jüntgen</div>
         <div class="founder-role">Head of Customer Experience & Success</div>
         <div class="founder-bio">Leads customer success and experience at Dash0. Ensures every customer gets maximum value from the platform — from onboarding to expansion.</div>
-      </div>
-      <div class="founder-card">
+      </a>
+      <a href="https://www.linkedin.com/in/paloma-baltazar-930863141/" target="_blank" rel="noopener noreferrer" class="founder-card">
         <img src="./images/paloma.png" alt="Paloma Baltazar" class="founder-photo">
         <div class="founder-name">Paloma Baltazar</div>
         <div class="founder-role">Talent & People</div>
         <div class="founder-bio">Previously at Perplexity. Experienced in scaling people operations and talent acquisition at fast-growing AI and tech companies.</div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
-
+ 
 <!-- TIMELINE -->
 <section class="timeline-section">
   <div class="container">
@@ -542,7 +580,7 @@ footer {
     </div>
   </div>
 </section>
-
+ 
 <!-- PRODUCT -->
 <section class="product">
   <div class="container">
@@ -573,7 +611,7 @@ footer {
     </div>
   </div>
 </section>
-
+ 
 <!-- COMPARISON -->
 <section class="comparison">
   <div class="container">
@@ -595,23 +633,23 @@ footer {
     </table>
   </div>
 </section>
-
+ 
 <!-- INVESTORS -->
 <section class="investors">
   <div class="container" style="text-align: center;">
     <div class="section-label">Backed By the Best</div>
     <div class="section-title">$155M from World-Class Investors</div>
     <div class="investor-logos">
-      <div class="investor-logo"><img src="./images/balderton.png" alt="Balderton Capital"></div>
-      <div class="investor-logo"><img src="./images/accel.png" alt="Accel"></div>
-      <div class="investor-logo"><img src="./images/cherry.png" alt="Cherry Ventures"></div>
-      <div class="investor-logo"><img src="./images/DIG.png" alt="DIG Ventures"></div>
-      <div class="investor-logo"><img src="./images/DTCP.png" alt="DTCP Growth"></div>
-      <div class="investor-logo"><img src="./images/t-capital.png" alt="T.Capital (Deutsche Telekom)"></div>
+      <a href="https://www.balderton.com/news/dash0-raises-110m-series-b-at-1b-valuation-to-build-the-ai-nervous-system-for-production/" target="_blank" rel="noopener noreferrer" class="investor-logo"><img src="./images/balderton.png" alt="Balderton Capital"></a>
+      <a href="https://www.accel.com/noteworthies/simplifying-observability-for-developers-everywhere-our-investment-in-dash0" target="_blank" rel="noopener noreferrer" class="investor-logo"><img src="./images/accel.png" alt="Accel"></a>
+      <a href="https://cherry.vc/articles/observability-for-the-ai-era" target="_blank" rel="noopener noreferrer" class="investor-logo"><img src="./images/cherry.png" alt="Cherry Ventures"></a>
+      <a href="https://www.linkedin.com/posts/dig-ventures_today-dash0-announces-110m-series-b-activity-7441815577695985664-uutY/" target="_blank" rel="noopener noreferrer" class="investor-logo"><img src="./images/DIG.png" alt="DIG Ventures"></a>
+      <a href="https://www.linkedin.com/posts/dtcp-capital_dash0-raises-110m-series-b-at-1b-valuation-activity-7441762101645201408-cuM1/" target="_blank" rel="noopener noreferrer" class="investor-logo"><img src="./images/DTCP.png" alt="DTCP Growth"></a>
+      <a href="https://www.linkedin.com/posts/t-capital_team-ai-observability-activity-7441769433951363072-5Ju3/" target="_blank" rel="noopener noreferrer" class="investor-logo"><img src="./images/t-capital.png" alt="T.Capital (Deutsche Telekom)"></a>
     </div>
   </div>
 </section>
-
+ 
 <!-- CUSTOMERS -->
 <section class="customers">
   <div class="container" style="text-align: center;">
@@ -626,7 +664,7 @@ footer {
     </div>
   </div>
 </section>
-
+ 
 <!-- WHY NOW -->
 <section class="why-now">
   <div class="container">
@@ -652,7 +690,7 @@ footer {
     </div>
   </div>
 </section>
-
+ 
 <!-- RESOURCES -->
 <section class="resources">
   <div class="container">
@@ -684,19 +722,19 @@ footer {
     </div>
   </div>
 </section>
-
+ 
 <!-- CTA -->
 <section class="cta">
   <h2>Ready to Join the Ride?</h2>
   <p>Dash0 is hiring across all teams. This is your chance to join before the real scaling begins.</p>
   <a href="https://www.dash0.com/careers" class="cta-btn">View Open Roles →</a>
 </section>
-
+ 
 <!-- FOOTER -->
 <footer>
   <p>Dash0 — The Agentic Observability Platform</p>
   <p style="margin-top: 8px; font-size: 13px;">Founded 2023 | New York & Berlin | 600+ Customers | $1B Valuation</p>
 </footer>
-
+ 
 </body>
 </html>
